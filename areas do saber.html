@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Áreas do Saber</title>
+  <style>
+    /* Reset básico */
+    body, h1, h2, p, img, button {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    /* Conteúdo principal */
+    main {
+      max-width: 1000px;
+      width: 90%;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      height: 350px;
+      overflow: hidden;
+      border: 3px solid #333;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-images img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: top; /* Foco na parte superior */
+    }
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-buttons button {
+      background: none;
+      color: #333;
+      border: none;
+      font-size: 30px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .carousel-buttons button:hover {
+      color: #555;
+    }
+
+    /* Botões gerais */
+    .botoes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .botoes button {
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .botoes button:hover {
+      background-color: #555;
+      transform: scale(1.05);
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+    }
+
+    /* Mensagem de Áreas */
+    .area-message {
+      font-size: 18px;
+      color: #333;
+      margin: 20px 0;
+      text-align: center;
+      display: none; /* Inicialmente escondida */
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <h1>Áreas do Saber</h1>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <!-- Carrossel de Fotos -->
+    <div class="carousel">
+      <div class="carousel-images">
+        <img src="fotolgn.jpg" alt="Foto Linguagens" class="active">
+        <img src="fotocnt.jpg" alt="Foto Ciências">
+        <img src="fotochs.jpg" alt="Foto Humanas">
+        <img src="fotomat.jpg" alt="Foto Matemática">
+      </div>
+      <div class="carousel-buttons">
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Botões de Áreas -->
+    <div class="botoes">
+      <button onclick="loadPage('linguagens')">Linguagens</button>
+      <button onclick="loadPage('ciencias')">Ciências</button>
+      <button onclick="loadPage('humanas')">Humanas</button>
+      <button onclick="loadPage('matematica')">Matemática</button>
+    </div>
+
+    <!-- Mensagem da área do saber -->
+    <div id="area-message" class="area-message"></div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2024 Áreas do Saber</p>
+  </footer>
+
+  <script>
+    // Script para carregar áreas do conhecimento com mensagens específicas
+    function loadPage(area) {
+      let message = '';
+      switch(area) {
+        case 'linguagens':
+          message = 'Sem sombra de duvidas minha atividade favorita foi o Maracatu, me diverti muito, dei muita risada e tive a incrivel experiência de ser caboclo.';
+          break;
+        case 'ciencias':
+          message = 'Recentemente realizamos uma aula pratica em química, mas essa é so um exemplo das inumeras aulas que tivemos e aprendemos com a mão na massa.';
+          break;
+        case 'humanas':
+          message = 'Humanas é minha áreas favorita e sem duvidas do SENAMUM foi o mais divertido que foi proporcionado. Fui premiado como delegação destaque e fiquei muito feliz de poder participar do evento';
+          break;
+        case 'matematica':
+          message = 'Matemática não ouve matéria favorita, mas sim o professor favorito. Clóvis o velho ranzinza mais tranquilo do mundo, tirando gargalhada de todos durante as aulas.';
+          break;
+        default:
+          message = 'Área desconhecida.';
+      }
+      document.getElementById('area-message').innerText = message;
+      document.getElementById('area-message').style.display = 'block';  // Exibe a mensagem
+    }
+
+    // Script do carrossel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-images img');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Inicializa o carrossel
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>
