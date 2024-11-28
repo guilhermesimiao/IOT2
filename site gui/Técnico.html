@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff; /* Fundo branco */
+            color: #333; /* Texto escuro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Coloca o conteúdo no topo */
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #000; /* Preto no cabeçalho */
+            color: #fff;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px; /* Espaçamento abaixo do cabeçalho */
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Aumenta o tamanho das imagens */
+            gap: 30px; /* Maior espaçamento entre as imagens */
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .photo-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            background-color: #fff; /* Caixa branca */
+            border: 1px solid #ddd; /* Borda sutil */
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta as imagens para cobrir a área da caixa */
+            transition: transform 0.3s ease, filter 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .photo-container:hover img {
+            transform: scale(1.1); /* Aumenta o efeito de zoom */
+            filter: brightness(0.8);
+        }
+
+        .photo-container .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semitransparente */
+            color: #fff;
+            padding: 1rem;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .photo-container:hover .description {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Projetos do Técnico</h1>
+    </header>
+
+    <div class="gallery">
+        <div class="photo-container">
+            <img src="carrinho.png" alt="Carrinho">
+            <div class="description">Foto do segue linha, um projeto divertido e complexo que nos divertiu muito. Utilizamos uma base, 3 rodas, 2 motores, baterias, o Arduino, a placa de ensaio e mais alguns materiais variados.</div>
+        </div>
+
+        <div class="photo-container">
+            <img src="boné.png" alt="Boné">
+            <div class="description">Foto do boné com detector de distância. Utilizamos um boné, o Arduino, os sensores, as saídas de áudio, as placas e mais alguns equipamentos variados.</div>
+        </div>
+
+        <div class="photo-container">
+            <img src="varal.png" alt="Varal">
+            <div class="description">Foto do varal que fecha sozinho por conta da chuva. Esse projeto foi desafiador por explorar nossa autonomia e capacidade de tomar decisões. Os materiais foram os mesmos, o diferente foi o sensor de água e os auxiliares.</div>
+        </div>
+    </div>
+
+</body>
+</html>
